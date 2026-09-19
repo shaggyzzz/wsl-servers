@@ -1,0 +1,57 @@
+{
+  "_comment": "Пример конфигурации со всеми возможными вариантами настроек. Скопируйте нужный блок в projects.json",
+  "wsl_distro": "Ubuntu",
+  "wsl_user": "username",
+  "projects": [
+    {
+      "_comment": "1. ПОЛНЫЙ ПРОЕКТ: веб-сервер + Docker БД (с автостартом) + очередь + расписание",
+      "name": "shop",
+      "domain": "shop.test",
+      "path": "/home/username/shop",
+      "port": 8001,
+      "queue": true,
+      "schedule": true,
+      "database": {
+        "type": "docker",
+        "container": "mysql-shop",
+        "port": 3306,
+        "auto_start": true
+      }
+    },
+    {
+      "_comment": "2. СЛУЖБА БД ПО ПОРТУ: веб-сервер + база данных по порту (MySQL / Postgres / Redis) + очередь",
+      "name": "crm",
+      "domain": "crm.test",
+      "path": "/home/username/crm",
+      "port": 8002,
+      "queue": true,
+      "schedule": false,
+      "database": {
+        "type": "port",
+        "port": 3306,
+        "name": "MySQL (порт 3306)"
+      }
+    },
+    {
+      "_comment": "3. POSTGRESQL / ДРУГОЙ ПОРТ: веб-сервер + PostgreSQL",
+      "name": "analytics",
+      "domain": "analytics.test",
+      "path": "/home/username/analytics",
+      "port": 8003,
+      "queue": false,
+      "schedule": true,
+      "database": {
+        "type": "port",
+        "port": 5432,
+        "name": "PostgreSQL (порт 5432)"
+      }
+    },
+    {
+      "_comment": "4. МИНИМАЛЬНЫЙ ПРОЕКТ: только веб-сервер (без очередей, без расписания, без проверки БД)",
+      "name": "landing",
+      "domain": "landing.test",
+      "path": "/home/username/landing",
+      "port": 8004
+    }
+  ]
+}

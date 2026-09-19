@@ -1,0 +1,17 @@
+# Персональная конфигурация проектов и путей
+projects.json
+
+# Файл-пример всегда сохраняется в Git
+!projects.example.json
+
+# Временные файлы и логи
+*.log
+*.tmp
+*.bak
+
+# Настройки IDE и операционной системы
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
